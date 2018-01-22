@@ -1,4 +1,5 @@
 Django
+django-debug-toolbar
 ipython
 ipdb
 psycopg2

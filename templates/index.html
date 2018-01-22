@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h3 class="pb-3 mb-4 font-italic border-bottom">
+    Blogs
+  </h3>
+
+  {% include 'posts/post.html' %}
+
+  <nav class="blog-pagination">
+    <a class="btn btn-outline-primary" href="#">Older</a>
+    <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
+  </nav>
+{% endblock %}
