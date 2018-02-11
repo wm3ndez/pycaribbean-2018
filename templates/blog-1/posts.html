@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load blog_tags %}
+
+{% block content %}
+  {% for post in object_list %}
+    {% include 'blog-1/post-item.html' %}
+  {% endfor %}
+
+  {% paginate page_obj %}
+{% endblock %}

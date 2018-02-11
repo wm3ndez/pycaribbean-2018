@@ -3,3 +3,5 @@ django-debug-toolbar
 ipython
 ipdb
 psycopg2
+names
+loremipsum
