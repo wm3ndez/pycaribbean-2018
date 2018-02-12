@@ -50,5 +50,5 @@ class Command(BaseCommand):
                     approved=random.random() < 0.8  # 80% post approved
                 )
 
-            for tag in random.choices(tags, k=4):
+            for tag in random.choices(tags, k=random.choice([2, 3, 4])):
                 post.tags.add(tag)

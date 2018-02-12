@@ -1,0 +1,7 @@
+{% extends 'blog-1/posts.html' %}
+
+{% block post_list %}
+  {% for post in object_list %}
+    {% include 'blog-2/post-item.html' %}
+  {% endfor %}
+{% endblock %}
