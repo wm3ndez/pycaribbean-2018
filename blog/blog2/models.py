@@ -16,6 +16,7 @@ class Post(PostAbstract):
         related_name='b2_posts'
     )
     approved = models.BooleanField(default=False, db_index=True)
+    featured = models.BooleanField(default=False, db_index=True)
     tags = models.ManyToManyField(Tag, related_name='b2_posts')
 
 

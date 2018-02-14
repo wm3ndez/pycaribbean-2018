@@ -12,6 +12,11 @@
 {% endblock %}
 
 {% block sidebar %}
-  {% popular_posts concrete_model 5 %}
+  {% block featured_posts %}
+    {% featured_posts concrete_model 5 %}
+  {% endblock %}
+  {% block popular_posts %}
+    {% popular_posts concrete_model 5 %}
+  {% endblock %}
   {{ block.super }}
 {% endblock %}

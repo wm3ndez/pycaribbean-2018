@@ -18,6 +18,11 @@ def popular_posts(PostModel, slice=5):
         post_score=Cast(F('views') * 0.01 + Count('postcomment') * 0.1, FloatField()),
     ).order_by('-post_score')
 
-    return {
-        'posts': posts[:slice]
-    }
+    return {'posts': posts[:slice]}
+
+
+@register.inclusion_tag('featured-posts.html')
+def featured_posts(PostModel, slice=5):
+    Post = PostModel.__class__
+    posts = Post.objects.filter(featured=True)
+    return {'posts': posts[:slice]}

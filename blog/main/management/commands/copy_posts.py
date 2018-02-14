@@ -23,6 +23,7 @@ class Command(BaseCommand):
                 date=post.date,
                 published=post.published,
                 approved=post.approved,
+                featured=post.featured,
             )
 
             for tag in post.tags.all():

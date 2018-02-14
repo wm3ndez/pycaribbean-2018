@@ -1,0 +1,12 @@
+<div class="p-3">
+  <h4 class="font-italic">Featured Posts</h4>
+  <ol class="list-unstyled mb-0">
+    {% for post in posts %}
+      <li>
+        <a href="#">{{ post }}</a> <br/>
+      </li>
+    {% empty %}
+      <li>No featured posts</li>
+    {% endfor %}
+  </ol>
+</div>

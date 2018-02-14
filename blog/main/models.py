@@ -32,6 +32,7 @@ class PostAbstract(models.Model):
     approved = models.BooleanField(default=False)
     tags = models.ManyToManyField(Tag)
     views = models.PositiveIntegerField(default=0)
+    featured = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title
