@@ -1,9 +1,10 @@
 from django.views.generic import ListView, DetailView
 
 from blog.blog2.models import Post
+from blog.main.views import PostRelatedViewMixin
 
 
-class BlogPostListView(ListView):
+class BlogPostListView(PostRelatedViewMixin, ListView):
     model = Post
     queryset = Post.objects.select_related(
         'author', 'category',
@@ -16,6 +17,6 @@ class BlogPostListView(ListView):
     paginate_by = 25
 
 
-class BlogPostView(DetailView):
+class BlogPostView(PostRelatedViewMixin, DetailView):
     model = Post
     template_name = 'blog-2/post.html'

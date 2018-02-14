@@ -5,3 +5,6 @@ ipdb
 psycopg2
 names
 loremipsum
+django-partial-index
+django-redis
+django-rq

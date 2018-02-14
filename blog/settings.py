@@ -122,6 +122,22 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
+
+RQ_QUEUES = {
+    'high': {
+        'USE_REDIS_CACHE': 'default',
+    }
+}
 try:
     from blog.local_settings import *
 except ImportError:

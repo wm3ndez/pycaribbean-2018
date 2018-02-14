@@ -10,3 +10,10 @@
 
   {% paginate page_obj %}
 {% endblock %}
+
+{% block sidebar %}
+  <h4>Popular Posts</h4>
+  {% popular_posts concrete_model 5 %}
+
+  {{ block.super }}
+{% endblock %}

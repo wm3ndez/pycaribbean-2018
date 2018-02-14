@@ -31,9 +31,19 @@ class PostAbstract(models.Model):
     published = models.DateTimeField(null=True, blank=True)
     approved = models.BooleanField(default=False)
     tags = models.ManyToManyField(Tag)
+    views = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return self.title
+
+    def increase_views(self):
+        self.views += 1
+        self.save()
+
+    @property
+    def score(self):
+        comments_score = self.concrete_model.postcomment_set.count() * 0.1
+        return comments_score + self.views * 0.01
 
     class Meta:
         abstract = True
