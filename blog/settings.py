@@ -132,12 +132,15 @@ CACHES = {
     }
 }
 
-
 RQ_QUEUES = {
     'high': {
         'USE_REDIS_CACHE': 'default',
     }
 }
+
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_CACHE_ALIAS = "default"
+
 try:
     from blog.local_settings import *
 except ImportError:

@@ -1,8 +1,22 @@
 {% extends 'blog-1/posts.html' %}
-{% load blog_tags %}
+{% load blog_tags cache %}
 
 {% block post_list %}
-  {% for post in object_list %}
-    {% include 'blog-2/post-item.html' %}
-  {% endfor %}
+  {% cache 100 blog3_posts %}
+    {% for post in object_list %}
+      {% include 'blog-3/post-item.html' %}
+    {% endfor %}
+  {% endcache %}
+{% endblock %}
+
+{% block featured_posts %}
+  {% cache 30 featured_posts %}
+    {% featured_posts concrete_model 5 %}
+  {% endcache %}
+{% endblock %}
+
+{% block popular_posts %}
+  {% cache 30 popular_posts %}
+    {% popular_posts concrete_model 5 %}
+  {% endcache %}
 {% endblock %}
