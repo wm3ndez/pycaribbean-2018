@@ -1,7 +1,10 @@
-<ol class="list-unstyled mb-0">
-  {% for post in posts %}
-    <li>
-      <a href="#">{{ post }}</a> <br/>
-    </li>
-  {% endfor %}
-</ol>
+<div class="p-3">
+  <h4 class="font-italic">Popular Posts</h4>
+  <ol class="list-unstyled mb-0">
+    {% for post in posts %}
+      <li>
+        <a href="#">{{ post }}</a> <br/>
+      </li>
+    {% endfor %}
+  </ol>
+</div>
