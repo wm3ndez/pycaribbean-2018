@@ -18,5 +18,8 @@
   {% block popular_posts %}
     {% popular_posts concrete_model 5 %}
   {% endblock %}
+  {% block category_tree %}
+    {% category_tree %}
+  {% endblock %}
   {{ block.super }}
 {% endblock %}
