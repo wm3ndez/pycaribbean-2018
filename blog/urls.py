@@ -12,7 +12,7 @@ urlpatterns = [
     path('blog-3/', include('blog.blog3.urls')),
     path('blog-4/', include('blog.blog4.urls')),
     path('admin/', admin.site.urls),
-
+    path(r'django-rq/', include('django_rq.urls')),
 ]
 
 if settings.DEBUG:

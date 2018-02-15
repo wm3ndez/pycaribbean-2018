@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'blog.blog3',
     'blog.blog4',
 
-    'debug_toolbar'
+    'debug_toolbar',
+    'django_rq',
 ]
 
 MIDDLEWARE = [
@@ -81,8 +82,11 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'HOST': 'db',
+        'PORT': 5432,
     }
 }
 
@@ -125,7 +129,7 @@ STATIC_URL = '/static/'
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379/1",
+        "LOCATION": "redis://redis:6379/1",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
@@ -140,6 +144,12 @@ RQ_QUEUES = {
 
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 SESSION_CACHE_ALIAS = "default"
+
+INTERNAL_IPS = ['127.0.0.1']
+
+DEBUG_TOOLBAR_CONFIG = {
+    'SHOW_TOOLBAR_CALLBACK': lambda x: True
+}
 
 try:
     from blog.local_settings import *

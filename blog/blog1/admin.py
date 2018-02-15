@@ -5,7 +5,7 @@ from blog.blog1.models import Post, PostComment
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'author', 'approved')
+    list_display = ('id', 'title', 'author', 'approved', 'category')
     list_filter = ('approved',)
 
 

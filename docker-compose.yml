@@ -1,0 +1,16 @@
+version: '3.1'
+services:
+   db:
+     image: postgres:9.6
+   redis:
+     image: redis
+   web:
+     build: .
+     command: ./run.sh
+     container_name: django-pycaribbean-2018
+     volumes:
+       - .:/code
+     ports:
+       - "8000:8000"
+     depends_on:
+       - db
