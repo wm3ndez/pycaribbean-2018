@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+python manage.py migrate
 python manage.py generate_users --quantity 100
 python manage.py generate_tags --quantity 10000
 python manage.py generate_categories --quantity 300
