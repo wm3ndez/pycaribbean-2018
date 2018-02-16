@@ -20,3 +20,7 @@
     {% popular_posts concrete_model 5 %}
   {% endcache %}
 {% endblock %}
+
+{% block category_tree %}
+  {% cached_category_tree %}
+{% endblock %}
