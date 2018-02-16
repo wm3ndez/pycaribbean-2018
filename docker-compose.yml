@@ -8,6 +8,7 @@ services:
      build: .
      command: ./run.sh
      container_name: django-pycaribbean-2018
+     entrypoint: /code/entrypoint.sh
      volumes:
        - .:/code
      ports:
