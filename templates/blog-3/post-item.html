@@ -1,1 +1,16 @@
-{% extends 'blog-1/post-item.html' %}
+<div class="blog-post mb-4">
+  <h2 class="blog-post-title">
+    <a href="{% url 'post-3' post.pk %}">{{ post }}</a>
+  </h2>
+  <strong>{{ post.category }}</strong>
+  <p class="blog-post-meta">{{ post.date|date }} by <a href="#">{{ post.author }}</a></p>
+  <p>{{ post.content|truncatewords:30 }}</p>
+  <div>
+    <i>Comments </i> <strong>({{ post.postcomment_set.count }})</strong>
+  </div>
+  <div class="mt-2 mb-2">
+    {% for tag in post.tags.all %}
+      <span class="badge badge-info">{{ tag }}</span>
+    {% endfor %}
+  </div>
+</div><!-- /.blog-post -->

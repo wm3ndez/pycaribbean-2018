@@ -1,3 +1,4 @@
+{% load blog_tags %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -71,7 +72,18 @@
     </div><!-- /.blog-main -->
 
     <aside class="col-md-4 blog-sidebar">
+
       {% block sidebar %}
+        {% block featured_posts %}
+          {% featured_posts concrete_model 5 %}
+        {% endblock %}
+        {% block popular_posts %}
+          {% popular_posts concrete_model 5 %}
+        {% endblock %}
+        {% block category_tree %}
+          {% category_tree %}
+        {% endblock %}
+
         <div class="p-3">
           <h4 class="font-italic">Elsewhere</h4>
           <ol class="list-unstyled">

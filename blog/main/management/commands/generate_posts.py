@@ -34,7 +34,8 @@ class Command(BaseCommand):
                     category=random.choice(categories),
                     title=title[:60],
                     content=content,
-                    approved=random.random() < 0.8  # 80% post approved
+                    approved=random.random() < 0.8,  # ~80% post approved
+                    featured=random.random() < 0.1  # ~10% post approved
                 )
             )
 
@@ -47,7 +48,7 @@ class Command(BaseCommand):
                     post=post,
                     user=random.choice(users),
                     comment=comment,
-                    approved=random.random() < 0.8  # 80% post approved
+                    approved=random.random() < 0.8  # ~80% post approved
                 )
 
             for tag in random.choices(tags, k=random.choice([2, 3, 4])):
