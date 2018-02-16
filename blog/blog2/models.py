@@ -1,7 +1,10 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 from blog.main.models import PostAbstract, CommentAbstract, Category, Tag
+from blog.main.utils import send_email_notifications
 
 
 class Post(PostAbstract):
@@ -28,3 +31,8 @@ class PostComment(CommentAbstract):
     )
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     approved = models.BooleanField(default=True, db_index=True)
+
+
+@receiver(post_save, sender=PostComment)
+def notify_users(sender, instance, *args, **kwargs):
+    send_email_notifications(instance)

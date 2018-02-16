@@ -1,6 +1,7 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView
 
-from blog.blog2.models import Post
+from blog.blog1.views import BlogPostView as PostView
+from blog.blog2.models import Post, PostComment
 from blog.main.views import PostRelatedViewMixin
 
 
@@ -17,6 +18,7 @@ class BlogPostListView(PostRelatedViewMixin, ListView):
     paginate_by = 25
 
 
-class BlogPostView(PostRelatedViewMixin, DetailView):
+class BlogPostView(PostView):
     model = Post
+    comment_model = PostComment
     template_name = 'blog-2/post.html'

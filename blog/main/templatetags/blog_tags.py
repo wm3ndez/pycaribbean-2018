@@ -39,6 +39,21 @@ def featured_posts(PostModel, slice=5):
 
 @register.inclusion_tag('category-tree.html')
 def category_tree():
+    def get_children(category):
+        return [CategoryTree(c.id, c.name, get_children(c))
+                for c in category.category_set.all()]
+
+    # Parent categories
+    categories = Category.objects.filter(parent__isnull=True)
+    tree = []
+    for category in categories:
+        tree.append(CategoryTree(category.id, category.name, get_children(category)))
+
+    return {'tree': _render_category_tree(tree)}
+
+
+@register.inclusion_tag('category-tree.html')
+def cached_category_tree():
     # @cached
     def get_children(category):
         return [CategoryTree(c.id, c.name, get_children(c))
@@ -48,8 +63,7 @@ def category_tree():
     categories = Category.objects.filter(parent__isnull=True)
     tree = []
     for category in categories:
-        # children = cache.get('category-%s' % category.id)
-        children = None
+        children = cache.get('category-%s' % category.id)
         if children is None:
             children = get_children(category)
             cache.set(
@@ -66,7 +80,7 @@ def category_tree():
 def _render_category_tree(tree):
     html = '<ul>'
     for node in tree:
-        html += '<li><a href="#">{}</a>{}</li>'.format(node.name,
-                                                       _render_category_tree(node.children))
+        html += '<li><a href="#">{}</a>{}</li>' \
+            .format(node.name, _render_category_tree(node.children))
     html += '</ul>'
     return html

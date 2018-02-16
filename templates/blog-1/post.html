@@ -22,6 +22,15 @@
           </div>
         {% endfor %}
       </div>
+      <div>
+        <h4>Leave a comment</h4>
+        <form method="post">
+          {% csrf_token %}
+          {{ form.comment }}
+          <br/>
+          <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+      </div>
     </div>
   </div><!-- /.blog-post -->
 {% endblock %}

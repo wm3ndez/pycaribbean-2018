@@ -25,6 +25,7 @@ SECRET_KEY = 'pp0dqgsazp*l_5&csmeic0hif7qae2g=d7ig$li-j-8a9f55$!'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+ADMINS = ('williams@williamsmendez.com',)
 
 # Application definition
 
@@ -89,6 +90,8 @@ DATABASES = {
         'PORT': 5432,
     }
 }
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
