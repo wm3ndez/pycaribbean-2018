@@ -1,4 +1,5 @@
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
+from django.contrib.auth.models import User
 
 
 class HomeView(TemplateView):
@@ -10,3 +11,8 @@ class PostRelatedViewMixin(object):
         ctx = super(PostRelatedViewMixin, self).get_context_data(**kwargs)
         ctx['concrete_model'] = self.model
         return ctx
+
+class Authors(ListView):
+    template_name = 'authors.html'
+    model = User
+    queryset = User.objects.all()

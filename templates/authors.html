@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Authors</h2>
+  {% for user in object_list %}
+      <div>
+        <a href="#">{{ user }}</a> <i>({{ user.b3_posts.count }} posts)</i>
+      </div>
+  {% endfor %}
+{% endblock %}
+
+{% block sidebar %}{% endblock %}

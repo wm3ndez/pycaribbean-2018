@@ -3,10 +3,11 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
 
-from blog.main.views import HomeView
+from blog.main.views import HomeView, Authors
 
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
+    path('authors/', Authors.as_view(), name='authors'),
     path('blog-1/', include('blog.blog1.urls')),
     path('blog-2/', include('blog.blog2.urls')),
     path('blog-3/', include('blog.blog3.urls')),

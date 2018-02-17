@@ -4,10 +4,21 @@
     Blogs
   </h3>
 
-  {% include 'posts/post.html' %}
 
   <nav class="blog-pagination">
     <a class="btn btn-outline-primary" href="#">Older</a>
     <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
   </nav>
+{% endblock %}
+
+{% block sidebar %}
+
+  <div class="p-3">
+    <h4 class="font-italic">Info</h4>
+    <ol class="list-unstyled">
+      <li><a href="https://github.com/wm3ndez">GitHub</a></li>
+      <li><a href="https://twitter.com/wmendezt">Twitter</a></li>
+      <li><a href="https://instagram.com/wmendezt">Instagram</a></li>
+    </ol>
+  </div>
 {% endblock %}
