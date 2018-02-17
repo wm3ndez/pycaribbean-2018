@@ -4,7 +4,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 from blog.main.models import PostAbstract, CommentAbstract, Category, Tag
-from blog.main.utils import send_email_notifications
+from blog.main.utils import send_email_notifications, send_email_notifications_async
 
 
 class Post(PostAbstract):
@@ -35,4 +35,12 @@ class PostComment(CommentAbstract):
 
 @receiver(post_save, sender=PostComment)
 def notify_users(sender, instance, *args, **kwargs):
-    send_email_notifications(instance)
+    import django_rq
+
+    queue = django_rq.get_queue('high')
+    queue.enqueue(
+        send_email_notifications_async,
+        instance.post.id,
+        instance.user.id,
+        instance.user.email
+    )
