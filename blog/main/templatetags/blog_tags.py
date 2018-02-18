@@ -60,7 +60,9 @@ def cached_category_tree():
                 for c in category.category_set.all()]
 
     # Parent categories
-    categories = Category.objects.filter(parent__isnull=True)
+    categories = Category.objects.filter(
+        parent__isnull=True
+    ).prefetch_related('category_set')
     tree = []
     for category in categories:
         children = cache.get('category-%s' % category.id)

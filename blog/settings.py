@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'blog.blog1',
     'blog.blog2',
     'blog.blog3',
-    'blog.blog4',
 
     'debug_toolbar',
     'django_rq',

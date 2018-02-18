@@ -12,7 +12,6 @@ urlpatterns = [
     path('blog-1/', include('blog.blog1.urls')),
     path('blog-2/', include('blog.blog2.urls')),
     path('blog-3/', include('blog.blog3.urls')),
-    path('blog-4/', include('blog.blog4.urls')),
     path('admin/', admin.site.urls),
     path(r'django-rq/', include('django_rq.urls')),
 ]
