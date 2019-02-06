@@ -1,8 +1,8 @@
 Django
 django-debug-toolbar
-ipython
-ipdb
-psycopg2-binary
+#ipython
+#ipdb
+#psycopg2-binary
 names
 loremipsum
 django-partial-index
