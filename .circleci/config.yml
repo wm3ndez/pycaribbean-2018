@@ -5,10 +5,8 @@ jobs:
          - image: circleci/python:3.6.4
       steps:
          - checkout
-         - run:
-            command: |
-               pip install -U pip
-               pip install -r requirements.txt
-         - run:
-            command: |
-               python manage.py test blog
+         - run: sudo chown -R circleci:circleci /usr/local/bin
+         - run: sudo chown -R circleci:circleci /usr/local/lib/python3.6/site-packages  
+         - run: pip install -U pip
+         - run: pip install -r requirements.txt
+         - run: python manage.py test blog
