@@ -5,6 +5,8 @@ jobs:
       steps:
          - checkout
          - run:
-            command: pip install -r requirements.txt
+            command: |
+               pip install -r requirements.txt
          - run:
-            command: python manage.py test blog
+            command: |
+               python manage.py test blog
